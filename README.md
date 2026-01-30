@@ -1,6 +1,12 @@
 # Steps:
 
 1. Create a jenkins job with the pipeline file
+2. Make sure to add the following parameters to the job:
+  1. kernelrepo
+  2. branch
+  3. filesystem
+  4. repo
+
 2. Some systems might be blocking tcp on port 8080 for jenkins so enable it:
 
   ```sh
