@@ -3,6 +3,30 @@ pipeline {
     environment {
         WORKSPACE = "workspace_${env.BUILD_NUMBER}"
     }
+
+	parameters {
+		string(
+		    name: 'kernelrepo',
+		    description: 'The repo where linux should be fetched from. Please note that this should be public. ',
+		    defaultValue: 'https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
+		)
+		string(
+		    name: 'branch',
+		    description: 'Branch in the repo',
+		    defaultValue: 'master'
+		)
+		choice(
+		    name: 'filesystem',
+		    choices: ['ext4', 'xfs', 'btrfs'],
+		    description: 'Filesystem type for testing'
+		)
+		string(
+		    name: 'config',
+		    description: 'avocado misc test config to pass to xfstests.py test. Note that the config name should match exactly to the yaml files present for the corresponding FS here: https://github.com/OjaswinM/avocado-misc-tests/tree/master/fs/xfstests.py.data',
+		    defaultValue: 'ci.yaml'
+		)
+	    }
+
     stages {
          stage('Prepare Script') {
             steps {
