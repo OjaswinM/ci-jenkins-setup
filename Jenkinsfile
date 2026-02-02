@@ -1,7 +1,7 @@
 pipeline {
     agent any
-    
-    
+
+
     parameters {
         string(
             name: 'label',
@@ -29,17 +29,17 @@ pipeline {
             defaultValue: 'ci.yaml'
         )
     }
-    
+
     environment {
         BUILD_WS = "workspace_${env.BUILD_NUMBER}"
         // BUILD_WS = "workspace_tmp"
-	
-	// Used to ssh into the machine where logs are stored for dashboard
+
+        // Used to ssh into the machine where logs are stored for dashboard
         remote_host = "localhost"
-	// Used webserver port in the remote_host
+        // Used webserver port in the remote_host
         remote_port = "3001"
-	// URL to use to send test results. This is based on the ci-dashboard hosted here:
-	// https://github.com/OjaswinM/ci-dashboard
+        // URL to use to send test results. This is based on the ci-dashboard hosted here:
+        // https://github.com/OjaswinM/ci-dashboard
         dashboard_insert_url = "http://localhost:3001/api/insert-test-run"
     }
     stages {

@@ -15,6 +15,7 @@
   sudo firewall-cmd --permanent --add-port=8080/tcp
   sudo firewall-cmd --permanent --reload
   ```
+
 5. Add jenkins to docker group, this is needed since the ci-scripts project uses docker to build:
 
   ```sh
