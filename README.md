@@ -30,6 +30,7 @@
   sudo visudo
   # add this line and save the editor and exit
     jenkins ALL=(root) NOPASSWD: /usr/bin/dnf -y install cloud-utils genisoimage
+    jenkins ALL=(root) NOPASSWD: /usr/bin/ppc64_cpu
   
   # then restart
   sudo systemctl restart jenkins
